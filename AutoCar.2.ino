@@ -24,7 +24,7 @@ void setup() {
     pinMode(motorRightEnable, OUTPUT);
     pinMode(shockPin, INPUT);
 
-    Serial.println("시리얼 통신 시작");
+    Serial.println("start serial");
 }
 
 void loop() {
@@ -40,11 +40,13 @@ void loop() {
             case 'S': stopMotors(); break;
         }
     }
-    
-    // 충격 감지 및 시리얼 전송
-    bool shockDetected = analogRead(shockPin) > shockThreshold;
+
+    // 충격 감지
+    int shockValue = analogRead(shockPin);  // 충격 감지 값
+    bool shockDetected = shockValue > shockThreshold;
     if (shockDetected) {
-        Serial.println("shock_detected");  // 충격 감지 시 메시지 전송
+        // 충격이 감지되었을 때만 출력
+        Serial.println(shockValue);  // 숫자 값만 출력 (시리얼 플로터에서 그래프 표시 가능)
     }
 
     // GPS 데이터 업데이트 및 시리얼 전송
