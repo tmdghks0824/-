@@ -36,7 +36,7 @@ while True:
     with torch.no_grad():
         results = model(frame_resized)
 
-    # 기본값 (정지)
+    # 기본값 (전진)
     command = 'F'
     obstacle_detected = False  # 장애물 감지 여부
 
