@@ -62,8 +62,8 @@ while True:
     class_ids = interpreter.get_tensor(output_details[1]['index'])[0]  # Class IDs
     scores = interpreter.get_tensor(output_details[2]['index'])[0]  # Confidence scores
 
-    # 기본값 (정지)
-    command = 'S'
+    # 기본값 (전진)
+    command = 'F'
     obstacle_detected = False  # 장애물 감지 여부
 
     for i, score in enumerate(scores):
